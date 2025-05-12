@@ -14,13 +14,13 @@ type KeyGenerator interface {
 
 // New returns a new KeyGenerator using pbkdf2 algorithm.
 func New(
-	hashFn func() hash.Hash, 
+	hashFn func() hash.Hash,
 	keyLength,
 	interactions int,
 ) KeyGenerator {
 	return &PBKDF2{
 		hg: hashFn,
-		l: keyLength,
-		i: interactions,
+		l:  keyLength,
+		i:  interactions,
 	}
 }

@@ -22,7 +22,7 @@ func TestPBKDF2(t *testing.T) {
 	assert.Equal(t, len(salt), generatedSaltLength)
 	derivedKey, err := keyGenerator.Generate(password, salt...)
 	assert.NoError(t, err)
-	assert.Equal(t, len(derivedKey), keyLength * 2)
+	assert.Equal(t, len(derivedKey), keyLength*2)
 	assert.True(t, keyGenerator.Compare(derivedKey, password, salt))
 	salt, err = keyGenerator.GenerateSalt(32)
 	assert.NoError(t, err)
