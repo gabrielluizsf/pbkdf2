@@ -7,7 +7,7 @@ type KeyGenerator interface {
 	// Generate returns a derived key from a password and a salt.
 	Generate(password string, salt ...byte) (derivedKey string, err error)
 	// GenerateSalt returns a random salt.
-	GenerateSalt() (salt []byte, err error)
+	GenerateSalt(size ...int) (salt []byte, err error)
 	// Compare compares if derived key is equal to the password.
 	Compare(derivedKey, password string, salt []byte) bool
 }

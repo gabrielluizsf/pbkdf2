@@ -65,8 +65,13 @@ func (p *PBKDF2) Compare(derivedKey, password string, salt []byte) bool {
 	return dk == derivedKey
 }
 
-func (p *PBKDF2) GenerateSalt() (salt []byte, err error) {
-	saltSize := 16
+const DEFAULT_SALT_SIZE = 16
+
+func (p *PBKDF2) GenerateSalt(size ...int) (salt []byte, err error) {
+	saltSize := DEFAULT_SALT_SIZE
+	if len(size) > 0 {
+		saltSize = size[0]
+	}
 	salt = make([]byte, saltSize)
 	_, err = rand.Read(salt)
 	return
